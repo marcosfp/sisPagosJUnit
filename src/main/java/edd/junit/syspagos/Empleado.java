@@ -47,7 +47,7 @@ public class Empleado {
 
     public void establecerNumero_empleado(String nEmpleado) throws NumeroEmpleadoException {
         int n;
-        if (nEmpleado.matches("^\\d+$")){
+        if (nEmpleado.matches("^\\d+$") && nEmpleado.length()==3){
             n= Integer.parseInt(nEmpleado);
             if (n>000 && n < 1000 ){
                 setNumero_empleado(n);
@@ -71,10 +71,10 @@ public class Empleado {
 
     public void estableceMeses_Trabajo(String mesesT) throws MesesTrabajoException {
         int n;
-        if (mesesT.matches("^\\d+$")){
+        if (mesesT.matches("^\\d+$") && mesesT.length()==3){
             n= Integer.parseInt(mesesT);
             if (n>=000 && n < 1000 ){
-                setNumero_empleado(n);
+                setMeses_trabajo(n);
                 return;
             }
         }
@@ -86,8 +86,10 @@ public class Empleado {
         if (directivo.length()==1){
             if (caracter[0] == '+' ){
                 setDirectivo(true);
+                return;
             }else if(caracter[0]=='-'){
                 setDirectivo(false);
+                return;
             }
         }
         throw new CargoException();
